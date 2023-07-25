@@ -1,2 +1,7 @@
 venv/
-
+dashboard/node_modules/
+dashboard/.idea/
+dashboard/.vscode/
+dashboard/.DS_Store
+dashboard/next-env.d.ts
+dashboard/.next/

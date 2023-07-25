@@ -43,3 +43,10 @@ async def get_shopping_hours() -> dict:
 
 async def get_product_types()->list:
     return df["Product line"].unique().tolist()
+
+
+async def get_table_data()->dict:
+    rows = df[["Invoice ID","Branch","City","Customer type","Gender","Product line","Unit price","Quantity","Tax 5%","Total","Date"]].head(20)
+    invoice_id = df["Invoice ID"]
+    
+    return rows.to_dict()

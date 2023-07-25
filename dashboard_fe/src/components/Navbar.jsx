@@ -11,7 +11,7 @@ const Navbar = () => {
     navigate("/");
   };
   return (
-    <div className="flex flex-row space-x-5 space-x w-full bg-sky-500 p-5 space mr-10 text-white">
+    <nav className="flex flex-row space-x-5 space-x w-full bg-sky-500 p-5 space mr-10 text-white">
       <div className="flex flex-row space-x-5 align-center">
         <div className="hover:cursor-pointer mt-2">
           <AiOutlineMenu
@@ -65,7 +65,7 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

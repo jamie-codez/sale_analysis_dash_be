@@ -48,7 +48,11 @@ async def get_data():
         }
     }
 
-@data_router.get("/product-lines",tags=["product lines"],response_model=dict,description="Returns product lines list")
+@data_router.get("/product-lines",response_model=dict,description="Returns product lines list")
 async def get_product_lines()->dict:
     product_lines = await get_product_types()
     return dict(product_lines=product_lines)
+
+@data_router.get("/list",response_model=dict,description="Returns list of the sales")
+async def get_list()->dict:
+    return await get_table_data()

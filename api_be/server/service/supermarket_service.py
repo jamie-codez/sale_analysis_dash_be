@@ -2,7 +2,7 @@ import pandas as pd
 
 df = pd.read_csv("data/supermarket_sales_sheet.csv")
 df["Date"] = pd.to_datetime(df["Date"])
-df["Hour"] = pd.to_datetime(df["Time"]).dt.hour
+df["Hour"] = pd.to_datetime(df["Time"],format="%H:%M").dt.hour
 
 
 async def univariate_data_analysis(group_by: str, interested_columns: str, title: str) -> dict:

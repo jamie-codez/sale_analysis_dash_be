@@ -3,9 +3,9 @@ import ChartGrid from "../components/ChartGrid";
 import { useState } from "react";
 
 const Charts = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
 
-  const getData = async () => {
+  const getChartData = async () => {
     const params = {
       method: "GET",
       headers: {
@@ -13,20 +13,20 @@ const Charts = () => {
         "content-type":"application/json"
       },
     };
-    const response = await fetch("http://localhost:8000/api/list", params);
+    const response = await fetch("http://localhost:8000/api/data", params);
     if (response.status === 200) {
       const jsonData = await response.json();
-      console.log(jsonData);
+      console.log(jsonData.data);
       setData(jsonData.data);
     } else {
       console.log("No data")
-      setData(null);
+      setData({});
     }
   };
 
   useEffect(() => {
-    getData();
-  });
+    getChartData();
+  },[data,setData]);
 
   return (
     <div className="h-screen mx-10">

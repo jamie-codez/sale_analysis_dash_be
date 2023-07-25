@@ -40,3 +40,6 @@ async def get_shopping_hours() -> dict:
         final_shopping_time_data[index] = result
     
     return final_shopping_time_data
+
+async def get_product_types()->list:
+    return df["Product line"].unique().tolist()

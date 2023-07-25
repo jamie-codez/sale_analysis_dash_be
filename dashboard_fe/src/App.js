@@ -5,6 +5,7 @@ import Dash from './pages/Dash';
 import Tables from './pages/Tables';
 import Charts from './pages/Charts';
 import Account from './pages/Account';
+import NotFound from './pages/NotFound';
 import { Routes,Route } from 'react-router-dom';
 
 function App() {
@@ -17,9 +18,10 @@ function App() {
           <Route path="/tables" element={<Tables />} />
           <Route path="/charts" element={<Charts />} />
           <Route path="/account" element={<Account />} />
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
       </div>
-      <div className='align-baseline'>
+      <div className="align-baseline sticky bottom-0">
         <Footer />
       </div>
     </div>

@@ -1,13 +1,29 @@
 import React from "react";
 import "../index.css";
-import {AiOutlineMenu,AiOutlineSearch} from "react-icons/ai"
+import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClicked = (e) => {
+    navigate("/");
+  };
   return (
     <div className="flex flex-row space-x-5 space-x w-full bg-sky-500 p-5 space mr-10 text-white">
       <div className="flex flex-row space-x-5 align-center">
-        <AiOutlineMenu className="hover:mouse-pointer mt-2" fontSize={18} height={30} width={30} />
-        <h2 className="items-center text-lg font-bold hover:italic">
+        <div className="hover:cursor-pointer mt-2">
+          <AiOutlineMenu
+            fontSize={18}
+            height={30}
+            width={30}
+          />
+        </div>
+        <h2
+          className="items-center text-lg font-bold hover:italic cursor-pointer"
+          onClick={handleLogoClicked}
+        >
           Supermarket Dash
         </h2>
       </div>
@@ -23,10 +39,30 @@ const Navbar = () => {
           </button>
         </div>
         <div className="flex flex-row space-x-5 mt-2 text-white">
-          <p>Dash</p>
-          <p>Tables</p>
-          <p>EDA</p>
-          <p>Account</p>
+          <Link to={"/"} replace className="hover:underline cursor-pointer">
+            Dash
+          </Link>
+          <Link
+            to={"/tables"}
+            replace
+            className="hover:underline cursor-pointer"
+          >
+            Tables
+          </Link>
+          <Link
+            to={"/charts"}
+            replace
+            className="hover:underline cursor-pointer"
+          >
+            EDA
+          </Link>
+          <Link
+            to={"/account"}
+            replace
+            className="hover:underline cursor-pointer"
+          >
+            Account
+          </Link>
         </div>
       </div>
     </div>

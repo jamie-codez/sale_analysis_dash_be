@@ -2,7 +2,7 @@ import React from 'react'
 
 const Dash = () => {
   return (
-    <div>Dash</div>
+    <div className="h-screen mx-10">Dash</div>
   )
 }
 

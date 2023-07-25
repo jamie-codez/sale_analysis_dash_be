@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from server.routes.data_routes import data_router
 import pandas as pd
 
 app = FastAPI()
@@ -12,7 +13,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(data_router, tags=["Data"], prefix="/api")
 
-@app.get("/", tags=["Root"], response_model=dict,response_description="Welcome to this supermarket analytics")
+
+@app.get("/api", tags=["Root"], response_model=dict,response_description="Welcome to this supermarket analytics")
 async def root():
     return {"message": "Hello World"}

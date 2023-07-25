@@ -2,7 +2,7 @@ import pandas as pd
 
 df = pd.read_csv("data/supermarket_sales_sheet.csv")
 df["Date"] = pd.to_datetime(df["Date"])
-df["Hour"] = df["Time"].dt.hour
+df["Hour"] = pd.to_datetime(df["Time"]).dt.hour
 
 
 async def univariate_data_analysis(group_by: str, interested_columns: str, title: str) -> dict:
@@ -32,11 +32,11 @@ async def get_shopping_hours() -> dict:
     bins = [0,12,18,24]
     labels = ["Morning","Afternoon","Evening"]
     df["Daytime"] = pd.cut(df["Hour"], bins=bins, labels=labels, right=False,include_lowest=True)
-    shopping_time=df.groupby("Branch")["Day time"].value_counts()
+    shopping_time = df.groupby("Branch")["Daytime"].value_counts()
     final_shopping_time_data = {"labels":["Branch A","Branch B","Branch C"],"label":"Shopping Time"}
 
     for index in ["A","B","C"]:
-        result = {"label":index,"data":shopping_time[index].toList()}
+        result = {"label":index,"data":shopping_time[index].values.tolist(),"labels":labels}
         final_shopping_time_data[index] = result
     
     return final_shopping_time_data
